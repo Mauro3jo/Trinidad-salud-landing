@@ -26,7 +26,7 @@ $carouselSlides = getHomeCarouselSlides();
   <!-- ====================================== -->
   <!-- ===============CAROUSEL=============== -->
   <!-- ====================================== -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" data-bs-touch="true" data-bs-interval="false">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true" data-bs-interval="6000" data-bs-pause="hover">
   <div class="carousel-indicators">
     <?php foreach ($carouselSlides as $index => $slide): ?>
       <button
