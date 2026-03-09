@@ -32,6 +32,17 @@ a.myanchor2 {
   border: thin solid blue;
 }
 
+.carousel-inner .carousel-item {
+  aspect-ratio: 13 / 5;
+  overflow: hidden;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
 .carousel-title {
   color: white;
 }

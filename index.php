@@ -18,87 +18,44 @@
   <!-- ==========ENCABEZADO Y BOTONERA======= -->
 
   <?php include("botonera.php"); ?>
+<?php
+require_once __DIR__ . "/backend/php/carousel-slides.php";
+$carouselSlides = getHomeCarouselSlides();
+?>
 
   <!-- ====================================== -->
   <!-- ===============CAROUSEL=============== -->
   <!-- ====================================== -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-    <!-- INDICADORES INFERIORES DE CAROUSEL -->
-    <!--  <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-    </div> -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="backend/img/carousel1.jpg" class="d-block w-100" alt="slide1" />
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <div class="caja-carousel">
-              <h2 class="carousel-title">Odontología General</h2>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
-            </div> -->
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="backend/img/carousel2.jpg" class="d-block w-100" alt="slide2" />
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <div class="caja-carousel">
-              <h2 class="carousel-title">Second slide label</h2>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div> -->
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="backend/img/carousel3.jpg" class="d-block w-100" alt="slide3" />
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <div class="caja-carousel">
-              <h2 class="carousel-title">Second slide label</h2>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div> -->
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="backend/img/carousel4.jpg" class="d-block w-100" alt="slide4" />
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <div class="caja-carousel">
-            <h2 class="carousel-title">Cirugía Oral, Implante Dental</h2>
-            <p>
-              Some representative placeholder content for the third slide.
-            </p>
-          </div> -->
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="backend/img/carousel5.png" class="d-block w-100" alt="slide5" />
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <div class="caja-carousel">
-            <h2 class="carousel-title">Cirugía Oral, Implante Dental</h2>
-            <p>
-              Some representative placeholder content for the third slide.
-            </p>
-          </div> -->
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" data-bs-touch="true" data-bs-interval="false">
+  <div class="carousel-indicators">
+    <?php foreach ($carouselSlides as $index => $slide): ?>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="<?php echo $index; ?>"
+        class="<?php echo $index === 0 ? "active" : ""; ?>"
+        aria-current="<?php echo $index === 0 ? "true" : "false"; ?>"
+        aria-label="Slide <?php echo $index + 1; ?>"></button>
+    <?php endforeach; ?>
   </div>
-  <!-- ====================================== -->
-  <!-- =============== INTRO =============== -->
+  <div class="carousel-inner">
+    <?php foreach ($carouselSlides as $index => $slide): ?>
+      <div class="carousel-item <?php echo $index === 0 ? "active" : ""; ?>">
+        <img src="<?php echo htmlspecialchars($slide["path"], ENT_QUOTES, "UTF-8"); ?>" class="d-block w-100 carousel-image" alt="<?php echo htmlspecialchars($slide["alt"], ENT_QUOTES, "UTF-8"); ?>" />
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- ====================================== -->
+<!-- =============== INTRO =============== -->
   <!-- ====================================== -->
   <section class="w-50 mx-auto text-center pt-5" id="intro">
     <h1 class="p-3 fs-2 border-top border-3">
