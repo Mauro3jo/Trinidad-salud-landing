@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,400;0,800;1,600&display=swap");
+
+:root {
+  --main-font: "Barlow";
+  --main-color: #fff;
+  --second-color: #ff1133;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+.sidebar {
+  margin-bottom: 70px;
+}
+
+form {
+  border: thin solid black;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 400px;
+  margin: auto;
+}
+
+.items-form input,
+.items-form select {
+  width: 48%;
+  border-radius: 7px;
+}
+
+.campo {
+  height: 30px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+.observaciones {
+  width: 95%;
+  padding: 7px;
+  margin-top: 6px;
+  border-radius: 7px;
+}
+
+.agendar {
+  margin-bottom: 8px;
+}
+
+.items-form {
+  text-align: center;
+}
+
+.ver-actividades {
+  border: thin solid black;
+  border-radius: 10px;
+  width: 90vw;
+  min-width: 400px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-turnos {
+  margin: auto;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.flex-item1,
+.flex-item2 {
+  flex-grow: 1;
+}
+
+/* =================BOTONES DE TABLA ================ */
+
+.boton-turnos-e,
+.boton-turnos-ed,
+.boton-turnos-r {
+  color: white;
+  padding: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 5px;
+  display: inline;
+}
+
+.boton-turnos-e a,
+.boton-turnos-ed a,
+.boton-turnos-r a {
+  text-decoration: none;
+  color: white;
+}
+
+.boton-turnos-e:hover {
+  background-color: red;
+  font-weight: bold;
+}
+
+.boton-turnos-ed:hover {
+  background-color: rgb(0, 89, 255);
+  font-weight: bold;
+}
+
+.boton-turnos-r:hover {
+  background-color: darkgreen;
+  font-weight: bold;
+}
+
+.borde-edit,
+.borde-edit2 {
+  border: thin solid rgb(60, 151, 255) !important;
+}
+
+.form-btn {
+  border: 0;
+}
+
+.btn-elimina {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 1013px) {
+  table {
+    width: 950%;
+    /* Ancho de la tabla */
+    /* border-collapse: collapse; */
+    margin: 5px;
+  }
+
+  /*    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+    } */
+
+  /* Asignar anchos de columna en porcentaje */
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 25%;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 25%;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 50%;
+  }
+}
+
+
+.btn-eliminar {
+  color: white;
+  background-color: var(--second-color);
+  padding: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 5px;
+  display: inline;
+  text-decoration: none;
+}
+.btn-editar {
+  color: black;
+  background-color: #ffc107;
+  padding: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 5px;
+  display: inline;
+  text-decoration: none;
+}
+ input.campo {
+          border-radius: 5px;
+        }
+
+@media screen and (min-width: 500px) {
+  .pchi {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ver-actividades {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .pgran {
+    display: none;
+  }
+}

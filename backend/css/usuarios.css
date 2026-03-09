@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,400;0,800;1,600&display=swap");
+
+:root {
+  --main-font: "Barlow";
+  --main-color: #fff;
+  --second-color: #ff1133;
+  --tercer-color: #797e8e;
+  --cuarto-color: #dde1e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow";
+}
+
+.txtRojo {
+  color: var(--second-color);
+}
+
+.sidebar {
+  margin-bottom: 70px;
+}
+
+.cerrarsesion {
+  list-style-type: none;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.label-center{
+  text-align:center;
+}
+
+@media screen and (max-width: 601px) {
+  .pgran {
+    display: none;
+  }
+}
+@media screen and (min-width: 601px) {
+  .pchi {
+    display: none;
+  }
+}

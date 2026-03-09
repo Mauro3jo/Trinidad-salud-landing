@@ -1,0 +1,66 @@
+.img-serv img {
+  border-radius: 10%;
+  width: 150px;
+  border: solid black thin;
+  transition: transform 0.2s ease;/* Suaviza la animación */
+}
+
+.img-serv img:hover{
+  transform: scale(1.05); /* Escala un 2% */
+}
+
+
+
+
+
+
+
+/* ============ MEDIA QUERIES PANTALLA SM========== */
+@media (max-width: 1200px) {
+  #local {
+    flex-wrap: wrap;
+    padding-top: 30px;
+  }
+  .wrapper {
+    width: 90%;
+    margin: auto;
+    padding-top: 50px;
+  }
+}
+
+/* ============ MEDIA QUERIES PANTALLA SM========== */
+@media (max-width: 768px) {
+  #intro,
+  #equipo {
+    width: 90% !important;
+  }
+  .servicio-fila {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .foto-equipo {
+    max-width: 70vw;
+  }
+}
+
+/* ============ MEDIA QUERIES PANTALLA EXTRA-SM========== */
+@media (max-width: 576px) {
+  .icono-wrap {
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+  #bg-contacto {
+    position: relative;
+    top: -30px;
+  }
+  .foto-equipo {
+    max-width: 350px;
+  }
+  .carousel {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90vw;
+  }
+}
+
