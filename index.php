@@ -55,6 +55,18 @@ $carouselSlides = getHomeCarouselSlides();
   </button>
 </div>
 <!-- ====================================== -->
+<!-- ============ PLACAS PLANES =========== -->
+<!-- ====================================== -->
+<section class="plan-plates-section" aria-labelledby="plan-plates-title">
+  <div class="plan-plates-grid">
+    <h2 id="plan-plates-title" class="visually-hidden">Planes Trinidad Salud</h2>
+    <img src="backend/img/plan-trinidad-basico.jpeg" alt="Placa del plan Trinidad Basico" class="plan-plate-image" />
+    <img src="backend/img/plan-genesis-integral.jpeg" alt="Placa del plan Genesis Integral" class="plan-plate-image" />
+    <img src="backend/img/plan-genesis-premium.jpeg" alt="Placa del plan Genesis Premium" class="plan-plate-image" />
+    <img src="backend/img/plan-afiliacion-precios.jpeg" alt="Placa de afiliacion y precios" class="plan-plate-image" />
+  </div>
+</section>
+<!-- ====================================== -->
 <!-- =============== INTRO =============== -->
   <!-- ====================================== -->
   <section class="w-50 mx-auto text-center pt-5" id="intro">

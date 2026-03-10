@@ -63,6 +63,222 @@ a.myanchor2 {
   opacity: 0.8;
 }
 
+.plan-plates-section {
+  width: min(1600px, 96vw);
+  margin: 20px auto 34px;
+}
+
+.plan-plates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.plan-plate-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 14px 32px rgba(21, 42, 78, 0.12);
+}
+
+.plan-summary-section {
+  width: min(1500px, 96vw);
+  margin: 18px auto 28px;
+}
+
+.plan-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.plan-card,
+.plan-price-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(21, 42, 78, 0.15);
+}
+
+.plan-card {
+  min-height: 100%;
+  padding: 18px 18px 92px;
+  color: #ffffff;
+}
+
+.plan-card--basic {
+  background: linear-gradient(135deg, #5c7bff 0%, #6b89ff 100%);
+}
+
+.plan-card--integral {
+  background: linear-gradient(135deg, #06863a 0%, #0e9642 100%);
+}
+
+.plan-card--premium {
+  background: linear-gradient(135deg, #777777 0%, #8c8c8c 100%);
+}
+
+.plan-card__content,
+.plan-price-card__content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.plan-card__content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.plan-price-card__content {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.plan-card__title {
+  margin: 0 0 10px;
+  font-size: clamp(1.2rem, 1.3vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.plan-card__list {
+  margin: 0;
+  padding-left: 1.05rem;
+  display: grid;
+  gap: 4px;
+  font-size: clamp(0.82rem, 0.72vw, 0.95rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.plan-card__logo-shell {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 78px;
+  min-height: 78px;
+  padding: 10px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(58, 112, 204, 0.92);
+}
+
+.plan-card__logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plan-price-card {
+  padding: 18px;
+  color: #121212;
+  background: #f2f1ed;
+}
+
+.plan-price-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/logo.png");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 130px;
+  opacity: 0.08;
+}
+
+.plan-price-card__heading,
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  align-items: start;
+  text-align: center;
+}
+
+.plan-price-card__heading {
+  margin-bottom: 10px;
+}
+
+.plan-price-card__heading-spacer {
+  display: none;
+}
+
+.plan-price-card__title {
+  margin: 0;
+  font-size: clamp(1rem, 1vw, 1.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.plan-price-card__rows {
+  display: grid;
+  gap: 10px;
+}
+
+.price-row__name,
+.price-row__value {
+  font-size: clamp(0.92rem, 0.92vw, 1.1rem);
+  line-height: 1.1;
+}
+
+.price-row__name {
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.price-row__name--basic {
+  color: #5675ff;
+}
+
+.price-row__name--integral {
+  color: #11a34c;
+}
+
+.price-row__name--premium {
+  color: #7a7a7a;
+}
+
+.price-row__value {
+  display: block;
+  text-align: center;
+  font-weight: 500;
+}
+
+.price-row__value::before {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.price-row__value:nth-child(2)::before {
+  content: "Afiliacion personal";
+}
+
+.price-row__value:nth-child(3)::before {
+  content: "Grupo familiar";
+}
+
+.plan-price-card__note {
+  margin: 14px 0 0;
+  font-size: clamp(0.78rem, 0.75vw, 0.92rem);
+  line-height: 1.35;
+  font-weight: 700;
+  text-align: center;
+}
+
 /* ============SECCION NUESTRO EQUIPO IMAGEN========== */
 
 #numeros-local div {
@@ -203,6 +419,60 @@ footer p {
   #equipo {
     width: 90% !important;
   }
+  .plan-plates-section {
+    width: 92vw;
+    margin: 18px auto 28px;
+  }
+  .plan-plates-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .plan-summary-section {
+    width: 92vw;
+    margin: 22px auto 34px;
+  }
+  .plan-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .plan-card,
+  .plan-price-card {
+    grid-column: auto;
+    height: auto;
+  }
+  .plan-card {
+    padding: 24px;
+  }
+  .plan-card__title {
+    margin-bottom: 16px;
+  }
+  .plan-card__list {
+    font-size: 0.96rem;
+    gap: 7px;
+  }
+  .plan-card__logo-shell {
+    position: static;
+    width: 94px;
+    min-height: 94px;
+    margin-top: 16px;
+    margin-left: auto;
+  }
+  .plan-price-card {
+    padding: 24px;
+  }
+  .price-row {
+    border-top: 1px solid rgba(18, 18, 18, 0.12);
+    padding-top: 14px;
+  }
+  .price-row__name,
+  .price-row__value {
+    font-size: 1.35rem;
+  }
+  .price-row__value {
+    display: block;
+  }
+  .plan-price-card__note {
+    font-size: 0.98rem;
+  }
   .servicio-fila {
     width: 100% !important;
     text-align: center;
@@ -253,6 +523,39 @@ footer p {
 @media (min-width: 992px) {
   .carousel {
     max-width: 60vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .plan-plates-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .plan-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .plan-card,
+  .plan-price-card {
+    height: 500px;
+  }
+  .plan-card__list,
+  .plan-price-card__rows {
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .plan-card__list::-webkit-scrollbar,
+  .plan-price-card__rows::-webkit-scrollbar {
+    width: 6px;
+  }
+  .plan-card__list::-webkit-scrollbar-thumb,
+  .plan-price-card__rows::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+  }
+  .plan-price-card__rows::-webkit-scrollbar-thumb {
+    background-color: rgba(18, 18, 18, 0.2);
   }
 }
 /* ============ BOTON CERRAR SESSION ========== */
