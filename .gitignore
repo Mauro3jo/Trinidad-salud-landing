@@ -1,0 +1,15 @@
+# Variables de entorno — NUNCA subir al repositorio
+.env
+.env.example
+
+# Dependencias / build
+node_modules/
+vendor/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
