@@ -28,9 +28,6 @@
             <a class="nav-link active" aria-current="page" href="index.php#">Inicio</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="index.php#servicios">Servicios</a>
-          </li>
           <li>
             <a class="nav-link" href="index.php#planes">Planes</a>
           </li>
