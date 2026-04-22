@@ -1,54 +1,108 @@
 <!-- =============== PIE DE LA PÁGINA =============== -->
-<br /><br /><br /><br /><br /><br />
-<section>
-  <footer
-    class="w-100 d-flex align-items-center justify-content-center flex-wrap"
-  >
-    <p class="fs-5 px-3 pt-3">
-      C.I.O. &copy; Todos los derechos reservados 2022
-    </p>
-    <div id="iconos">
-      <a href="https://www.facebook.com/trinidadsaludgrupoCIO/"
-        ><i class="bi bi-facebook"></i
-      ></a>
-      <a href=""><i class="bi bi-twitter"></i></a>
-      <a href=""><i class="bi bi-instagram"></i></a>
-    </div>
-  </footer>
-</section>
-<button type="button" class="btn whatsapp">
-  <a href="https://api.whatsapp.com/send?phone=5493813658588"
-    ><i class="bi bi-whatsapp"></i
-  ></a>
-</button>
-<!-- EMERGENCIAS -->
-    <!-- ====== BOTON MODAL EMERGANCIAS ======  -->
-<button
-  type="button"
-  class="btn emergencia btn-danger"
-  data-bs-toggle="modal"
-  data-bs-target="#emergenciasModal"
->
-  <i class="bi bi-exclamation-triangle-fill"></i>
-<span class="leyenda"> Emergencias</span>
-</button>
- <!-- ====== VENTANA MODAL EMERGANCIAS ====== -->
-    <div class="modal fade" id="emergenciasModal" tabindex="-1" aria-labelledby="emergenciaModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-danger fw-bold text-center">
-            <h1 class="modal-title fs-5" id="emergenciaModalLabel">Emergencias las 24 horas</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <img src="backend/img/emergencia.jpg" alt="Tel: 2540617">
+<footer class="footer-main">
+  <div class="container py-5">
+    <div class="row g-5">
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-          </div>
+      <!-- Branding -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="backend/img/logo.png" alt="Trinidad Salud" height="44">
+          <span class="footer-brand-name">Trinidad Salud</span>
+        </div>
+        <p class="footer-desc">Tu salud y la de tu familia, siempre presente. Cobertura médica integral en Tucumán con más de 10 años de trayectoria.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/trinidadsaludgrupoCIO/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/trinidadsaludok/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=5493813658588" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
 
+      <!-- Navegación -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="footer-col-title">Navegación</h6>
+        <ul class="footer-links">
+          <li><a href="index.php">Inicio</a></li>
+          <li><a href="index.php#planes">Planes</a></li>
+          <li><a href="index.php#ubicacion">Sedes</a></li>
+          <li><a href="afiliarse.php">Afiliate</a></li>
+        </ul>
+      </div>
+
+      <!-- Portal afiliados -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="footer-col-title">Portal Afiliados</h6>
+        <ul class="footer-links">
+          <li><a href="portal/login.php">Mi Portal</a></li>
+          <li><a href="portal/login.php">Credencial digital</a></li>
+          <li><a href="portal/login.php">Reintegros</a></li>
+          <li><a href="portal/login.php">Autorizaciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-lg-4 col-md-6">
+        <h6 class="footer-col-title">Contacto</h6>
+        <ul class="footer-contact">
+          <li>
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>Bolívar 450, San Miguel de Tucumán</span>
+          </li>
+          <li>
+            <i class="bi bi-whatsapp"></i>
+            <a href="https://api.whatsapp.com/send?phone=5493813658588" target="_blank">381-365-8588</a>
+          </li>
+          <li>
+            <i class="bi bi-telephone-fill"></i>
+            <span>0800 333 0425 <small>(Emergencias 24hs)</small></span>
+          </li>
+          <li>
+            <i class="bi bi-headset"></i>
+            <span>0800 333 4300 <small>(Atención al afiliado)</small></span>
+          </li>
+        </ul>
+      </div>
+
     </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-2">
+        <p class="mb-0 small">C.I.O. &copy; 2025 Trinidad Salud &mdash; Todos los derechos reservados.</p>
+        <a href="portal/login.php" class="footer-portal-link">
+          <i class="bi bi-person-circle me-1"></i>Acceso afiliados
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante WhatsApp -->
+<button type="button" class="btn whatsapp">
+  <a href="https://api.whatsapp.com/send?phone=5493813658588" target="_blank"><i class="bi bi-whatsapp"></i></a>
+</button>
+
+<!-- Botón flotante Emergencias -->
+<button type="button" class="btn emergencia btn-danger" data-bs-toggle="modal" data-bs-target="#emergenciasModal">
+  <i class="bi bi-exclamation-triangle-fill"></i>
+  <span class="leyenda"> Emergencias</span>
+</button>
+
+<!-- Modal emergencias -->
+<div class="modal fade" id="emergenciasModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-danger fw-bold">
+        <h1 class="modal-title fs-5">Emergencias las 24 horas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="backend/img/emergencia.jpg" alt="Tel: 2540617">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

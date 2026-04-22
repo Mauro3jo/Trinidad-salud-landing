@@ -27,52 +27,22 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php#">Inicio</a>
           </li>
-
-          <li>
+          <li class="nav-item">
             <a class="nav-link" href="index.php#planes">Planes</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Servicios
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="servicios.php#blanqueamiento">Blanqueamiento</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="servicios.php#estetica-dental">Estética Dental</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="servicios.php#odontologia-general">Odontología General</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="servicios.php#ortodoncia">Ortodoncia</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="servicios.php#endodoncia">Endodoncia</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Implante Dental</a></li>
-            </ul>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="index.php#ubicacion">Nuestra Ubicación</a>
           </li>
-         <!--  <li class="nav-item">
-            <a class="nav-link" href="beneficios.php#beneficios">[Beneficios]</a>
-          </li> -->
-          <!--  
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-        -->
+          <li class="nav-item">
+            <a class="nav-link" href="index.php#planes">Beneficios</a>
+          </li>
         </ul>
-        <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+        <div class="d-flex gap-2 ms-2 my-2 my-lg-0">
+          <a href="afiliarse.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">Afiliate</a>
+          <a href="portal/login.php" class="btn btn-primary btn-sm rounded-pill px-3">
+            <i class="bi bi-person-fill me-1"></i>Mi Portal
+          </a>
+        </div>
       </div>
     </div>
   </nav>
