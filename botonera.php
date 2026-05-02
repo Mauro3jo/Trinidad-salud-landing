@@ -36,6 +36,9 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php#planes">Beneficios</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="servicios.php">Reintegros y Autorizaciones</a>
+          </li>
         </ul>
         <div class="d-flex gap-2 ms-2 my-2 my-lg-0">
           <a href="afiliarse.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">Afiliate</a>
