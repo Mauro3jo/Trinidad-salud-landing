@@ -8,6 +8,18 @@ $token         = portal_token();
 $error         = $success = '';
 $bank_error    = $bank_success = '';
 
+// Tipos disponibles (espejo de la app móvil)
+$TIPOS = [
+    'consulta'      => 'Consulta médica',
+    'practica'      => 'Práctica / estudio',
+    'medicamento'   => 'Medicamento',
+    'odontologia'   => 'Odontología',
+    'optica'        => 'Óptica',
+    'kinesiologia'  => 'Kinesiología',
+    'psicologia'    => 'Psicología',
+    'otro'          => 'Otro',
+];
+
 // Guardar cuenta bancaria (PUT /bank-account)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_bank'])) {
     $bank_payload = [
@@ -23,10 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_bank'])) {
     }
 }
 
-// Handle new reimbursement submission
+// Crear nuevo reintegro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['invoice'])) {
-    $file  = $_FILES['invoice'];
-    $notes = trim($_POST['notes'] ?? '');
+    $file = $_FILES['invoice'];
 
     if ($file['error'] !== UPLOAD_ERR_OK) {
         $error = 'No se pudo cargar el archivo. Intentá de nuevo.';
@@ -40,10 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['invoice'])) {
             'invoice_file_name'  => $file['name'],
             'invoice_pdf_base64' => $pdf_b64,
         ];
+
+        $tipo = $_POST['tipo'] ?? '';
+        if ($tipo !== '' && isset($TIPOS[$tipo])) $payload['tipo'] = $tipo;
+
+        $fechaServicio = trim($_POST['fecha_servicio'] ?? '');
+        if ($fechaServicio !== '') $payload['fecha_servicio'] = $fechaServicio;
+
+        $prestador = trim($_POST['prestador'] ?? '');
+        if ($prestador !== '') $payload['prestador'] = $prestador;
+
+        $nroFactura = trim($_POST['nro_factura'] ?? '');
+        if ($nroFactura !== '') $payload['nro_factura'] = $nroFactura;
+
+        $monto = trim($_POST['monto_solicitado'] ?? '');
+        if ($monto !== '' && is_numeric($monto)) $payload['monto_solicitado'] = (float)$monto;
+
+        $notes = trim($_POST['notes'] ?? '');
         if ($notes !== '') $payload['notes'] = $notes;
 
-        $res = api_post('/reimbursements', $payload, $token);
-        if (($res['_http_code'] ?? 0) === 201 || ($res['_http_code'] ?? 0) === 200) {
+        $res  = api_post('/reimbursements', $payload, $token);
+        $code = $res['_http_code'] ?? 0;
+        if ($code === 201 || $code === 200) {
             $success = 'Reintegro enviado correctamente. Revisaremos tu solicitud en breve.';
         } else {
             $error = api_first_error($res);
@@ -60,13 +89,27 @@ $bank     = $bank_res['bank_account'] ?? $bank_res ?? [];
 
 function badge_reimb(string $status): string {
     $map = [
-        'pendiente' => 'badge-pendiente',
-        'aprobado'  => 'badge-aprobado',
-        'rechazado' => 'badge-rechazado',
+        'pendiente'              => ['bg-warning text-dark',     'Pendiente'],
+        'en_revision'            => ['bg-info text-white',       'En revisión'],
+        'requiere_documentacion' => ['bg-warning text-dark',     'Requiere doc'],
+        'aprobado'               => ['bg-success text-white',    'Aprobado'],
+        'pagado'                 => ['bg-primary text-white',    'Pagado'],
+        'rechazado'              => ['bg-danger text-white',     'Rechazado'],
     ];
-    $cls = $map[strtolower($status)] ?? 'bg-secondary';
-    $color = in_array(strtolower($status), ['pendiente']) ? '' : 'text-white';
-    return "<span class=\"status-badge badge {$color} {$cls}\">" . htmlspecialchars($status) . "</span>";
+    [$cls, $label] = $map[strtolower($status)] ?? ['bg-secondary text-white', ucfirst($status)];
+    return "<span class=\"status-badge badge {$cls}\">{$label}</span>";
+}
+
+function fmt_date_reimb(?string $d): string {
+    if (!$d) return '––';
+    $datePart = explode(' ', $d)[0];
+    $parts = explode('-', $datePart);
+    return count($parts) === 3 ? "{$parts[2]}/{$parts[1]}/{$parts[0]}" : $d;
+}
+
+function fmt_money(?string $v): string {
+    if ($v === null || $v === '') return '––';
+    return '$' . number_format((float)$v, 2, ',', '.');
 }
 ?>
 <!DOCTYPE html>
@@ -162,9 +205,46 @@ function badge_reimb(string $status): string {
           </div>
           <input type="file" name="invoice" id="invoice" accept=".pdf" class="d-none" onchange="updateLabel(this)">
         </div>
-        <div class="mb-3">
+
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Tipo de gasto</label>
+            <select name="tipo" class="form-select">
+              <option value="">— elegir —</option>
+              <?php foreach ($TIPOS as $value => $label): ?>
+                <option value="<?= $value ?>" <?= ($_POST['tipo'] ?? '') === $value ? 'selected' : '' ?>>
+                  <?= htmlspecialchars($label) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Fecha del servicio</label>
+            <input type="date" name="fecha_servicio" class="form-control"
+                   value="<?= htmlspecialchars($_POST['fecha_servicio'] ?? '') ?>">
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Prestador</label>
+            <input type="text" name="prestador" class="form-control"
+                   placeholder="Médico, farmacia, óptica, etc."
+                   value="<?= htmlspecialchars($_POST['prestador'] ?? '') ?>">
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">N° Factura</label>
+            <input type="text" name="nro_factura" class="form-control"
+                   value="<?= htmlspecialchars($_POST['nro_factura'] ?? '') ?>">
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Monto solicitado ($)</label>
+            <input type="number" name="monto_solicitado" class="form-control" step="0.01" min="0"
+                   placeholder="Ej: 12500.00"
+                   value="<?= htmlspecialchars($_POST['monto_solicitado'] ?? '') ?>">
+          </div>
+        </div>
+
+        <div class="mb-3 mt-3">
           <label class="form-label fw-semibold small">Observaciones (opcional)</label>
-          <textarea name="notes" class="form-control" rows="2" placeholder="Ej: Consulta médica del 10/04/2025"></textarea>
+          <textarea name="notes" class="form-control" rows="2" placeholder="Detalles adicionales"></textarea>
         </div>
         <button type="submit" class="btn-portal-primary btn">
           <i class="bi bi-send me-1"></i>Enviar solicitud
@@ -181,20 +261,59 @@ function badge_reimb(string $status): string {
       </div>
     <?php else: ?>
       <?php foreach ($items as $item): ?>
-        <div class="portal-list-item">
-          <div class="flex-grow-1">
-            <div class="item-title"><?= htmlspecialchars($item['invoice_file_name'] ?? 'Comprobante') ?></div>
-            <div class="item-sub">
-              <?php if (!empty($item['created_at'])): ?>
-                <i class="bi bi-calendar3 me-1"></i><?= htmlspecialchars(substr($item['created_at'], 0, 10)) ?>
+        <?php
+          $status     = $item['status'] ?? 'pendiente';
+          $canDownload = in_array($status, ['aprobado', 'pagado', 'rechazado']);
+        ?>
+        <div class="portal-list-item d-block">
+          <div class="d-flex align-items-start">
+            <div class="flex-grow-1">
+              <div class="item-title">
+                REI-<?= str_pad((int)($item['id'] ?? 0), 5, '0', STR_PAD_LEFT) ?> ·
+                <?= htmlspecialchars($item['tipo_label'] ?? $item['invoice_file_name'] ?? 'Comprobante') ?>
+              </div>
+              <div class="item-sub">
+                <i class="bi bi-calendar3 me-1"></i>Cargado: <?= fmt_date_reimb($item['created_at'] ?? null) ?>
+                <?php if (!empty($item['fecha_servicio'])): ?>
+                  &nbsp;·&nbsp; Servicio: <?= fmt_date_reimb($item['fecha_servicio']) ?>
+                <?php endif; ?>
+                <?php if (!empty($item['prestador'])): ?>
+                  &nbsp;·&nbsp; <?= htmlspecialchars($item['prestador']) ?>
+                <?php endif; ?>
+              </div>
+              <?php if (!empty($item['monto_solicitado']) || !empty($item['monto_aprobado'])): ?>
+                <div class="item-sub mt-1">
+                  <?php if (!empty($item['monto_solicitado'])): ?>
+                    Solicitado: <?= fmt_money($item['monto_solicitado']) ?>
+                  <?php endif; ?>
+                  <?php if (!empty($item['monto_aprobado'])): ?>
+                    &nbsp;·&nbsp; <strong style="color:#1B6E45;">Aprobado: <?= fmt_money($item['monto_aprobado']) ?></strong>
+                    <?php if (!empty($item['paid_at'])): ?>
+                      <span class="badge bg-primary text-white ms-1">Pagado</span>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                </div>
               <?php endif; ?>
               <?php if (!empty($item['notes'])): ?>
-                &nbsp;·&nbsp; <?= htmlspecialchars($item['notes']) ?>
+                <div class="item-sub mt-1"><i class="bi bi-chat-left-text me-1"></i><?= htmlspecialchars($item['notes']) ?></div>
+              <?php endif; ?>
+              <?php if (!empty($item['motivo_rechazo'])): ?>
+                <div class="alert alert-danger small rounded-3 py-2 mt-2 mb-0">
+                  <strong>Motivo del rechazo:</strong> <?= htmlspecialchars($item['motivo_rechazo']) ?>
+                </div>
               <?php endif; ?>
             </div>
-          </div>
-          <div class="flex-shrink-0">
-            <?= badge_reimb($item['status'] ?? 'pendiente') ?>
+            <div class="flex-shrink-0 text-end">
+              <?= badge_reimb($status) ?>
+              <?php if ($canDownload): ?>
+                <div class="mt-2">
+                  <a href="pdf.php?type=reintegro&id=<?= (int)$item['id'] ?>"
+                     class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-download me-1"></i>PDF
+                  </a>
+                </div>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
       <?php endforeach; ?>
