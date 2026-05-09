@@ -1,7 +1,24 @@
 <?php
 // afiliarse.php – solo valida localmente y luego la página la maneja con JS + fetch
 
-$LARAVEL_API = 'https://trinidadsalud.online/api/public/registro';
+// Leer base URL del .env (mismo que el portal). Si no existe, default a producción.
+(function () {
+    $env_file = __DIR__ . '/.env';
+    if (!is_readable($env_file)) return;
+    foreach (file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (str_starts_with(trim($line), '#')) continue;
+        [$key, $val] = array_map('trim', explode('=', $line, 2)) + ['', ''];
+        if ($key !== '' && !array_key_exists($key, $_ENV)) {
+            $_ENV[$key] = $val;
+        }
+    }
+})();
+
+// LANDING_API_BASE = base hasta /api (sin /mobile), para hacer /api/public/registro
+// Si solo está PORTAL_API_BASE, derivamos sacando /mobile
+$portalBase = $_ENV['PORTAL_API_BASE'] ?? 'https://trinidadsalud.online/api/mobile';
+$apiBase    = $_ENV['LANDING_API_BASE'] ?? preg_replace('#/mobile/?$#', '', $portalBase);
+$LARAVEL_API = rtrim($apiBase, '/') . '/public/registro';
 ?>
 <!DOCTYPE html>
 <html lang="es">

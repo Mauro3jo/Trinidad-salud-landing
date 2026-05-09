@@ -5,8 +5,16 @@ require_once __DIR__ . '/includes/api.php';
 portal_require_auth();
 
 $token         = portal_token();
-$error         = $success = '';
-$bank_error    = $bank_success = '';
+
+// Leer mensajes flash (vienen del POST anterior tras el redirect)
+$success      = $_SESSION['flash_success']      ?? '';
+$error        = $_SESSION['flash_error']        ?? '';
+$bank_success = $_SESSION['flash_bank_success'] ?? '';
+$bank_error   = $_SESSION['flash_bank_error']   ?? '';
+unset(
+    $_SESSION['flash_success'],      $_SESSION['flash_error'],
+    $_SESSION['flash_bank_success'], $_SESSION['flash_bank_error']
+);
 
 // Tipos disponibles (espejo de la app móvil)
 $TIPOS = [
@@ -29,10 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_bank'])) {
     ];
     $bank_put = api_put('/bank-account', $bank_payload, $token);
     if (($bank_put['_http_code'] ?? 0) === 200) {
-        $bank_success = 'Cuenta bancaria guardada.';
+        $_SESSION['flash_bank_success'] = 'Cuenta bancaria guardada.';
     } else {
-        $bank_error = api_first_error($bank_put);
+        $_SESSION['flash_bank_error'] = api_first_error($bank_put);
     }
+    header('Location: reintegros.php');
+    exit;
 }
 
 // Crear nuevo reintegro
@@ -73,11 +83,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['invoice'])) {
         $res  = api_post('/reimbursements', $payload, $token);
         $code = $res['_http_code'] ?? 0;
         if ($code === 201 || $code === 200) {
-            $success = 'Reintegro enviado correctamente. Revisaremos tu solicitud en breve.';
+            $_SESSION['flash_success'] = 'Reintegro enviado correctamente. Revisaremos tu solicitud en breve.';
         } else {
-            $error = api_first_error($res);
+            $_SESSION['flash_error'] = api_first_error($res);
         }
     }
+
+    // Si alguna validación previa setteó $error, lo flasheamos
+    if ($error !== '') {
+        $_SESSION['flash_error'] = $error;
+    }
+
+    // POST/Redirect/GET: evita reenvío al recargar y limpia el formulario
+    header('Location: reintegros.php');
+    exit;
 }
 
 $res     = api_get('/reimbursements', $token);

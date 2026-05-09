@@ -1,0 +1,74 @@
+:root {
+  --p-primary: #2F7CE5;
+  --p-primary-dark: #184F9D;
+  --p-success: #1B6E45;
+  --p-warning: #8b6e1f;
+  --p-danger: #a33d3d;
+  --p-bg: #f4f7fb;
+}
+
+body.prest-body { background: var(--p-bg); min-height: 100vh; }
+.prest-main { padding: 30px 0 60px; }
+.prest-header h1 { font-weight: 800; color: #2a3850; margin: 0; }
+.prest-header p { color: #5e6f88; margin: 4px 0 0; }
+
+.p-card { background: #fff; border-radius: 18px; box-shadow: 0 4px 14px rgba(40,70,120,.06); }
+
+.btn-prest-primary {
+  background: var(--p-primary-dark);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 22px;
+  font-weight: 700;
+  width: 100%;
+  transition: all .2s;
+}
+.btn-prest-primary:hover { background: var(--p-primary); color:#fff; }
+
+/* Login */
+.login-wrap {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #2F7CE5 0%, #184F9D 100%);
+  padding: 20px;
+}
+.login-card {
+  background:#fff; border-radius:24px; padding:40px 32px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  max-width: 420px; width:100%;
+}
+.login-logo { height: 64px; }
+
+/* Validar - resultado */
+.estado-banner {
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.estado-banner i { font-size: 2rem; }
+.estado-vigente  { background: #e7f8ef; color: #136B40; border: 2px solid #1B6E45; }
+.estado-usada    { background: #fff3d9; color: #8b6e1f; border: 2px solid #ffaa00; }
+.estado-vencida, .estado-rechazada, .estado-error {
+  background: #FDE8E8; color: #a33d3d; border: 2px solid #dc3545;
+}
+
+.info-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eef1f5; font-size:.94rem; }
+.info-row:last-child { border-bottom: none; }
+.info-label { color:#6b7a91; font-weight:600; }
+.info-value { color:#34445d; font-weight:700; text-align:right; }
+.codigo-display { font-family: monospace; font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; color: #184F9D; }
+
+/* Historial */
+.hist-item {
+  background:#fff; border-radius:14px; padding:14px 18px;
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:10px;
+}
+.hist-item .codigo { font-family: monospace; font-weight:800; color:#184F9D; }
+
+/* Stats */
+.stat-card { background:#fff; border-radius:18px; padding:20px; text-align:center; }
+.stat-card .num { font-size: 2.4rem; font-weight: 800; color: #184F9D; }
+.stat-card .lbl { color:#6b7a91; text-transform: uppercase; font-size:.78rem; letter-spacing:1px; }

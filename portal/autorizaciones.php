@@ -5,7 +5,11 @@ require_once __DIR__ . '/includes/api.php';
 portal_require_auth();
 
 $token   = portal_token();
-$error   = $success = '';
+
+// Leer mensajes flash (vienen del POST anterior tras el redirect)
+$success = $_SESSION['flash_success'] ?? '';
+$error   = $_SESSION['flash_error']   ?? '';
+unset($_SESSION['flash_success'], $_SESSION['flash_error']);
 
 // Tipos disponibles (espejo de la app móvil)
 $TIPOS = [
@@ -55,12 +59,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_auth'])) {
             $res = api_post('/authorization-requests', $payload, $token);
             $code = $res['_http_code'] ?? 0;
             if ($code === 200 || $code === 201) {
-                $success = 'Solicitud enviada. Te avisaremos cuando esté revisada.';
+                $_SESSION['flash_success'] = 'Solicitud enviada. Te avisaremos cuando esté revisada.';
             } else {
-                $error = api_first_error($res);
+                $_SESSION['flash_error'] = api_first_error($res);
             }
         }
     }
+
+    // Si alguna validación previa setteó $error, lo flasheamos
+    if ($error !== '') {
+        $_SESSION['flash_error'] = $error;
+    }
+
+    // POST/Redirect/GET: evita reenvío al recargar y limpia el formulario
+    header('Location: autorizaciones.php');
+    exit;
 }
 
 // Cargar listado del afiliado (igual que en la app móvil)
