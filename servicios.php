@@ -209,7 +209,10 @@
       <p class="text-muted mb-4">
         Afiliate hoy y empezá a aprovechar todos nuestros servicios desde la app.
       </p>
-      <a href="afiliarse.php" class="btn btn-primary btn-lg rounded-pill px-5">
+      <!-- Link original al formulario: <a href="afiliarse.php" class="btn btn-primary btn-lg rounded-pill px-5">
+        <i class="bi bi-person-plus me-2"></i>Afiliarme ahora
+      </a> -->
+      <a href="https://api.whatsapp.com/send?phone=5493813658588&text=Hola,%20quiero%20afiliarme%20a%20Trinidad%20Salud" target="_blank" class="btn btn-primary btn-lg rounded-pill px-5">
         <i class="bi bi-person-plus me-2"></i>Afiliarme ahora
       </a>
       <a href="portal/login.php" class="btn btn-outline-primary btn-lg rounded-pill px-5 ms-2">

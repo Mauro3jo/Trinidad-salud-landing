@@ -302,7 +302,8 @@ $carouselSlides = getHomeCarouselSlides();
               <strong>¿Querés afiliarte?</strong>
               <span>Completá el formulario y un asesor se contactará con vos.</span>
             </div>
-            <a href="afiliarse.php" class="btn-cta-solid">Quiero afiliarme <i class="bi bi-arrow-right ms-1"></i></a>
+            <!-- Link original al formulario: <a href="afiliarse.php" class="btn-cta-solid">Quiero afiliarme <i class="bi bi-arrow-right ms-1"></i></a> -->
+            <a href="https://api.whatsapp.com/send?phone=5493813658588&text=Hola,%20quiero%20afiliarme%20a%20Trinidad%20Salud" target="_blank" class="btn-cta-solid">Quiero afiliarme <i class="bi bi-arrow-right ms-1"></i></a>
           </div>
         </div>
       </div>

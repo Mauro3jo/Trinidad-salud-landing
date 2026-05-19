@@ -41,7 +41,8 @@
           </li>
         </ul>
         <div class="d-flex gap-2 ms-2 my-2 my-lg-0">
-          <a href="afiliarse.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">Afiliate</a>
+          <!-- Link original al formulario: <a href="afiliarse.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">Afiliate</a> -->
+          <a href="https://api.whatsapp.com/send?phone=5493813658588&text=Hola,%20quiero%20afiliarme%20a%20Trinidad%20Salud" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">Afiliate</a>
           <a href="portal/login.php" class="btn btn-primary btn-sm rounded-pill px-3">
             <i class="bi bi-person-fill me-1"></i>Mi Portal
           </a>
