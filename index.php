@@ -102,10 +102,6 @@ $carouselSlides = getHomeCarouselSlides();
             </div>
             <div class="plan-card-body text-center">
               <h3 class="plan-name-sm basico-text">Trinidad Básico</h3>
-              <div class="plan-price-inline">
-                <span class="price-pers">$15.000<small>/mes personal</small></span>
-                <span class="price-fam"><i class="bi bi-people-fill"></i> $18.000/mes familiar</span>
-              </div>
               <p class="plan-tagline">Coberturas esenciales para tu salud y la de tu familia.</p>
               <span class="btn-plan-sm basico-btn">Ver beneficios <i class="bi bi-chevron-right"></i></span>
             </div>
@@ -122,10 +118,6 @@ $carouselSlides = getHomeCarouselSlides();
             </div>
             <div class="plan-card-body text-center">
               <h3 class="plan-name-sm integral-text">Génesis Integral</h3>
-              <div class="plan-price-inline">
-                <span class="price-pers">$35.000<small>/mes personal</small></span>
-                <span class="price-fam"><i class="bi bi-people-fill"></i> $45.000/mes familiar</span>
-              </div>
               <p class="plan-tagline">Cobertura completa con reintegros y descuentos ampliados.</p>
               <span class="btn-plan-sm integral-btn">Ver beneficios <i class="bi bi-chevron-right"></i></span>
             </div>
@@ -142,10 +134,6 @@ $carouselSlides = getHomeCarouselSlides();
             </div>
             <div class="plan-card-body text-center">
               <h3 class="plan-name-sm premium-text">Génesis Premium</h3>
-              <div class="plan-price-inline">
-                <span class="price-pers">$45.000<small>/mes personal</small></span>
-                <span class="price-fam"><i class="bi bi-people-fill"></i> $60.000/mes familiar</span>
-              </div>
               <p class="plan-tagline">Lo mejor en cobertura, reintegros y beneficios exclusivos.</p>
               <span class="btn-plan-sm premium-btn">Ver beneficios <i class="bi bi-chevron-right"></i></span>
             </div>
@@ -153,8 +141,6 @@ $carouselSlides = getHomeCarouselSlides();
         </div>
 
       </div>
-
-      <p class="planes-nota">* Precio final sujeto a modificaciones. La integración del grupo familiar está sujeta a términos y condiciones.</p>
     </div>
   </section>
 
@@ -170,10 +156,6 @@ $carouselSlides = getHomeCarouselSlides();
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-4">
-          <div class="plan-modal-prices mb-4">
-            <div class="plan-modal-price-item"><span class="pmp-label">Personal</span><span class="pmp-val">$15.000<small>/mes</small></span></div>
-            <div class="plan-modal-price-item"><span class="pmp-label"><i class="bi bi-people-fill"></i> Familiar</span><span class="pmp-val">$18.000<small>/mes</small></span></div>
-          </div>
           <ul class="plan-benefits">
             <li>Desc. hasta 40% en odontología, libre elección de profesionales</li>
             <li>Desc. en ortodoncia de hasta 50% en prestadores de la red</li>
@@ -211,10 +193,6 @@ $carouselSlides = getHomeCarouselSlides();
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-4">
-          <div class="plan-modal-prices mb-4">
-            <div class="plan-modal-price-item"><span class="pmp-label">Personal</span><span class="pmp-val">$35.000<small>/mes</small></span></div>
-            <div class="plan-modal-price-item"><span class="pmp-label"><i class="bi bi-people-fill"></i> Familiar</span><span class="pmp-val">$45.000<small>/mes</small></span></div>
-          </div>
           <ul class="plan-benefits integral-check">
             <li>Desc. hasta 40% en odontología, libre elección de profesionales</li>
             <li>Desc. en ortodoncia de hasta 60% en prestadores de la red</li>
@@ -253,10 +231,6 @@ $carouselSlides = getHomeCarouselSlides();
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-4">
-          <div class="plan-modal-prices mb-4">
-            <div class="plan-modal-price-item"><span class="pmp-label">Personal</span><span class="pmp-val">$45.000<small>/mes</small></span></div>
-            <div class="plan-modal-price-item"><span class="pmp-label"><i class="bi bi-people-fill"></i> Familiar</span><span class="pmp-val">$60.000<small>/mes</small></span></div>
-          </div>
           <ul class="plan-benefits premium-check">
             <li>Desc. hasta 50% + reintegros en odontología, libre elección y 1ª consulta gratis en prestadores de la red</li>
             <li>Desc. en ortodoncia de hasta 80% en prestadores de la red</li>

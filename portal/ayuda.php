@@ -73,7 +73,7 @@ portal_require_auth();
         </div>
         <div>
           <div class="fw-bold">Facebook</div>
-          <div class="text-muted small">trinidadsaludgrupoCIO</div>
+          <div class="text-muted small">Trinidad Salud</div>
         </div>
         <i class="bi bi-chevron-right ms-auto text-muted"></i>
       </a>
