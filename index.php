@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="facebook-domain-verification" content="7qx749iwzzvf0tjq8a448rdlcwd5wk" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
   <title>Trinidad Salud</title>
@@ -303,7 +304,7 @@ $carouselSlides = getHomeCarouselSlides();
                 <h5 class="sede-name-v2"><i class="bi bi-geo-alt-fill text-primary"></i> Sede Centro</h5>
                 <div class="sede-info-row">
                   <i class="bi bi-signpost-2-fill"></i>
-                  <span>Bolívar 450</span>
+                  <span>Bolívar 446</span>
                 </div>
                 <div class="sede-info-row">
                   <i class="bi bi-whatsapp"></i>
